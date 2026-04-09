@@ -1,0 +1,95 @@
+{
+  "id": "trellis-2",
+  "name": "TRELLIS.2",
+  "source": "https://github.com/microsoft/TRELLIS.2",
+  "description": "Microsoft TRELLIS.2: High-fidelity image-to-3D with PBR textures via O-Voxel structured latents. Requires ~24GB VRAM.",
+  "version": "2.0.0",
+  "author": "Lightning Pixel",
+  "generator_class": "Trellis2Generator",
+  "tags": [
+    "image-to-3d",
+    "high-quality",
+    "pbr",
+    "diffusion"
+  ],
+  "models": [
+    {
+      "id": "trellis-2-4b",
+      "name": "TRELLIS.2-4B",
+      "hf_repo": "microsoft/TRELLIS.2-4B",
+      "download_check": "pipeline.json",
+      "description": "4B-parameter O-Voxel diffusion model for high-fidelity image-to-3D with PBR textures (~24GB VRAM)"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "generate",
+      "type": "generate",
+      "label": "Generate 3D",
+      "params": [
+        {
+          "id": "resolution",
+          "label": "Resolution",
+          "type": "select",
+          "default": "1024",
+          "options": [
+            { "value": "512",  "label": "512 (Fast, ~8GB VRAM)" },
+            { "value": "1024", "label": "1024 (Balanced, ~16GB VRAM)" },
+            { "value": "1536", "label": "1536 (High Quality, ~24GB VRAM)" }
+          ]
+        },
+        {
+          "id": "decimation_target",
+          "label": "Decimation Target (faces)",
+          "type": "int",
+          "default": 500000,
+          "min": 100000,
+          "max": 1000000
+        },
+        {
+          "id": "texture_size",
+          "label": "Texture Size",
+          "type": "select",
+          "default": 2048,
+          "options": [
+            { "value": 1024, "label": "1024" },
+            { "value": 2048, "label": "2048 (Default)" },
+            { "value": 4096, "label": "4096 (High)" }
+          ]
+        },
+        {
+          "id": "seed",
+          "label": "Seed (-1 = random)",
+          "type": "int",
+          "default": -1,
+          "min": -1,
+          "max": 2147483647
+        },
+        {
+          "id": "ss_sampling_steps",
+          "label": "Sparse Structure Steps",
+          "type": "int",
+          "default": 12,
+          "min": 1,
+          "max": 50
+        },
+        {
+          "id": "shape_slat_sampling_steps",
+          "label": "Shape SLAT Steps",
+          "type": "int",
+          "default": 12,
+          "min": 1,
+          "max": 50
+        },
+        {
+          "id": "tex_slat_sampling_steps",
+          "label": "Texture SLAT Steps",
+          "type": "int",
+          "default": 12,
+          "min": 1,
+          "max": 50
+        }
+      ]
+    }
+  ]
+}
