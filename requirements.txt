@@ -1,0 +1,16 @@
+Pillow
+rembg[gpu]
+torch
+torchvision
+opencv-python-headless
+imageio
+imageio-ffmpeg
+trimesh
+transformers
+huggingface_hub
+tqdm
+easydict
+ninja
+kornia
+timm
+zstandard
